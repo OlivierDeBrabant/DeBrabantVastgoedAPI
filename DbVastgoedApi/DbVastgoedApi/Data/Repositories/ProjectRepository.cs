@@ -1,5 +1,6 @@
-﻿using DbVastgoedApi.Data.Mapper;
+﻿using DbVastgoedApi.Data;
 using DbVastgoedApi.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +10,13 @@ namespace DbVastgoedApi.Data
 {
     public class ProjectRepository
     {
-        private ICollection<Project> _projecten;
-        private ProjectContext _context;
+        private readonly ProjectContext _context;
+        private readonly DbSet<Project> _projecten;
 
-        public ProjectRepository()
+        public ProjectRepository(ProjectContext dbContext)
         {
-            _context = new ProjectContext();
-            _projecten = _context.geefProjecten();
+            _context = dbContext;
+            _projecten = dbContext.Projecten;
         }
 
         public IEnumerable<Project> GeefAlle()

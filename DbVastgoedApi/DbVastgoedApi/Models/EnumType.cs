@@ -9,6 +9,8 @@ namespace DbVastgoedApi.Models
     {
         Open,
         Halfopen,
-        Gesloten
+        Gesloten,
+        Appartement,
+        Loft
     }
 }

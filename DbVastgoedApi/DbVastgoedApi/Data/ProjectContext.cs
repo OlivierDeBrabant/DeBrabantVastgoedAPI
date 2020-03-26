@@ -10,8 +10,6 @@ namespace DbVastgoedApi.Data
 {
     public class ProjectContext : Microsoft.EntityFrameworkCore.DbContext
     {
-        public ICollection<Project> _projects;
-        
         /*
         public ProjectContext()
         {
@@ -46,7 +44,7 @@ namespace DbVastgoedApi.Data
                 .HasMany(p => p.Producten)
                 .WithOne()
                 .IsRequired()
-                .HasForeignKey("RecipeId"); //Shadow property
+                .HasForeignKey("ProjectID"); //Shadow property
             builder.Entity<Project>().Property(p => p.Naam).IsRequired().HasMaxLength(50);
 
             builder.Entity<Product>().Property(pr => pr.Titel).IsRequired().HasMaxLength(50);
@@ -54,17 +52,18 @@ namespace DbVastgoedApi.Data
 
             //Another way to seed the database
             builder.Entity<Project>().HasData(
-                 new Project { }
+                 new Project { ID = 1, Naam = "Residentie Vindevogel"},
+                 new Project { ID = 2, Naam = "Verkaveling Eikenveld"}
             );
 
             builder.Entity<Product>().HasData(
-                    //Shadow property can be used for the foreign key, in combination with anaonymous objects
-                    new { Id = 1, Name = "Tomatoes", Amount = (double?)0.75, Unit = "liter", RecipeId = 1 },
-                    new { Id = 2, Name = "Minced Meat", Amount = (double?)500, Unit = "grams", RecipeId = 1 },
-                    new { Id = 3, Name = "Onion", Amount = (double?)2, RecipeId = 1 }
-                 );
+            //Shadow property can be used for the foreign key, in combination with anaonymous objects
+                new Product { ID = 1, ProjectID = 1, Titel = "Ruim Appartement", Type = EnumType.Appartement, Kostprijs = 7.28},
+                new Product { ID = 2, ProjectID = 1, Titel = "Zonnig Dakappartement", Type = EnumType.Loft, Kostprijs = 18.20},
+                new Product { ID = 3, ProjectID = 2, Titel = "Gezellige Woning", Type = EnumType.Halfopen, Kostprijs = 25.33}
+            );
         }
 
-        public Microsoft.EntityFrameworkCore.DbSet<Project> Recipes { get; set; }
+        public Microsoft.EntityFrameworkCore.DbSet<Project> Projecten { get; set; }
     }
 }

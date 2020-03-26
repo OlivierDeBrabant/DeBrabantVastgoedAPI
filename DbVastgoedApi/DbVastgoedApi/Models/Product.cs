@@ -22,6 +22,7 @@ namespace DbVastgoedApi.Models
         //public List<int> FotoNummers { get; set; }
         public Boolean isVerkocht { get; set; }
         public int ID { get; set; }
+        public int ProjectID { get; set; }
 
         /*
         public Product()
