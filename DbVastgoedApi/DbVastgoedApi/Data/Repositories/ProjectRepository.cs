@@ -23,13 +23,29 @@ namespace DbVastgoedApi.Data
         {
             return _projecten.ToList();
         }
-        public void voegProjectenToe(Project p)
+        public void Add(Project p)
         {
             _projecten.Add(p);
         }
         public Project geefProjectOpID(int id)
         {
             return _projecten.SingleOrDefault(p => p.ID == id);
+        }
+        public void Update(Project p)
+        {
+            _context.Update(p);
+        }
+        public void DeleteProject(Project p)
+        {
+            _projecten.Remove(p);
+        }
+        public void DeleteProduct(Product p)
+        {
+            
+        }
+        public void SaveChanges()
+        {
+            _context.SaveChanges();
         }
     }
 }

@@ -8,11 +8,9 @@ namespace DbVastgoedApi.Data
 {
     public class ProjectDataInitializer
     {
-        public class RecipeDataInitializer
-        {
             private readonly ProjectContext _dbContext;
 
-            public RecipeDataInitializer(ProjectContext dbContext)
+            public ProjectDataInitializer(ProjectContext dbContext)
             {
                 _dbContext = dbContext;
             }
@@ -25,7 +23,5 @@ namespace DbVastgoedApi.Data
                     //seeding the database with recipes, see DBContext               
                 }
             }
-
-        }
     }
 }
