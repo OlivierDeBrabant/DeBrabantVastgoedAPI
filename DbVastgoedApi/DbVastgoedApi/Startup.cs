@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DbVastgoedApi.Data;
+using DbVastgoedApi.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,6 +33,7 @@ namespace DbVastgoedApi
                         options.UseSqlServer(Configuration.GetConnectionString("ProjectContext")));
 
             services.AddScoped<ProjectDataInitializer>();
+            services.AddScoped<IProjectRepository, ProjectRepository>();
             services.AddSwaggerDocument();
 
             services.AddOpenApiDocument(c =>

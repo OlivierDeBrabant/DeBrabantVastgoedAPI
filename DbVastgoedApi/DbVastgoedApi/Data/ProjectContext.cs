@@ -8,32 +8,9 @@ using System.Threading.Tasks;
 
 namespace DbVastgoedApi.Data
 {
-    public class ProjectContext : Microsoft.EntityFrameworkCore.DbContext
+    public class ProjectContext : DbContext
     {
-        /*
-        public ProjectContext()
-        {
-            _projects = new List<Project>();
-
-            Product p = new Product();
-            p.Titel = "Landelijk Huis Oeselgem";
-            p.Gemeente = "Oeselgem";
-            p.Straat = "Vennebosstraat";
-
-            Product p2 = new Product();
-            p2.Titel = "Moderne Villa Aan De Leie";
-            p2.Gemeente = "Wielsbeke";
-            p2.Type = EnumType.Open;
-
-            Project project = new Project();
-            project.VoegProductToe(p);
-            project.VoegProductToe(p2);
-
-            _projects.Add(project);
-        }
-        */
-        public ProjectContext(DbContextOptions<ProjectContext> options)
-            : base(options)
+        public ProjectContext(DbContextOptions<ProjectContext> options) : base(options)
         {
         }
 
@@ -64,6 +41,6 @@ namespace DbVastgoedApi.Data
             );
         }
 
-        public Microsoft.EntityFrameworkCore.DbSet<Project> Projecten { get; set; }
+        public DbSet<Project> Projecten { get; set; }
     }
 }

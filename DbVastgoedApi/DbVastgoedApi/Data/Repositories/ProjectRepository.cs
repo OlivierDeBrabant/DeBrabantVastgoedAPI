@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DbVastgoedApi.Data
 {
-    public class ProjectRepository
+    public class ProjectRepository : IProjectRepository
     {
         private readonly ProjectContext _context;
         private readonly DbSet<Project> _projecten;
@@ -21,7 +21,7 @@ namespace DbVastgoedApi.Data
 
         public IEnumerable<Project> GeefAlle()
         {
-            return _projecten.ToList();
+            return _projecten.Include(p => p.Producten).ToList();
         }
         public void Add(Project p)
         {

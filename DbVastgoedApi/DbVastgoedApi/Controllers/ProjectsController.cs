@@ -13,9 +13,9 @@ namespace DbVastgoedApi.Controllers
     [ApiController]
     public class ProjectsController : ControllerBase
     {
-        private readonly ProjectRepository _projectRepo;
+        private readonly IProjectRepository _projectRepo;
 
-        public ProjectsController(ProjectRepository repo)
+        public ProjectsController(IProjectRepository repo)
         {
             _projectRepo = repo;
         }
