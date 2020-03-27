@@ -10,22 +10,30 @@ namespace DbVastgoedApi.Models
     {
         [Required]
         public string Naam { get; set; }
-        public ICollection<Product> Producten { get; set; }
-        public int ID { get; set; }
+        public int ProjectID { get; set; }
         public string Beschrijving { get; set; }
+        public ICollection<Product> Producten { get; set; }
 
 
         public Project()
         {
             Producten = new List<Product>();
         }
+
+        public Project(string naam, string beschrijving, int projectID)
+        {
+            Naam = naam;
+            Beschrijving = beschrijving;
+            ProjectID = projectID;
+        }
+
         public void VoegProductToe(Product p)
         {
             Producten.Add(p);
         }
         public Product GetProduct(int id)
         {
-            return Producten.SingleOrDefault(p => p.ID == id);
+            return Producten.SingleOrDefault(p => p.ProductID == id);
         }
     }
 }

@@ -29,15 +29,15 @@ namespace DbVastgoedApi.Data
 
             //Another way to seed the database
             builder.Entity<Project>().HasData(
-                 new Project { ID = 1, Naam = "Residentie Vindevogel"},
-                 new Project { ID = 2, Naam = "Verkaveling Eikenveld"}
+                 new Project { ProjectID = 1, Naam = "Residentie Vindevogel"},
+                 new Project { ProjectID = 2, Naam = "Verkaveling Eikenveld"}
             );
 
             builder.Entity<Product>().HasData(
             //Shadow property can be used for the foreign key, in combination with anaonymous objects
-                new { ID = 1, ProjectID = 1, Titel = "Ruim Appartement", Type = EnumType.Appartement, Kostprijs = 7.28, Straat = "", Huisnummer = 9, Postcode = 8720, Beschrijving = "", Gemeente = "", isVerkocht = false, Oppervlakte = 10},
-                new { ID = 2, ProjectID = 1, Titel = "Zonnig Dakappartement", Type = EnumType.Loft, Kostprijs = 18.20, Straat = "", Huisnummer = 10, Postcode = 8720, Beschrijving = "", Gemeente = "", isVerkocht = false, Oppervlakte = 11 },
-                new { ID = 3, ProjectID = 2, Titel = "Gezellige Woning", Type = EnumType.Halfopen, Kostprijs = 25.33, Straat = "", Huisnummer = 11, Postcode = 8720, Beschrijving = "", Gemeente = "", isVerkocht = false, Oppervlakte = 12 }
+                new { ProductID = 1, ProjectID = 1, Titel = "Ruim Appartement", Type = EnumType.Appartement, Kostprijs = 7.28, Straat = "", Huisnummer = 9, Postcode = 8720, Beschrijving = "", Gemeente = "", isVerkocht = false, Oppervlakte = 10},
+                new { ProductID = 2, ProjectID = 1, Titel = "Zonnig Dakappartement", Type = EnumType.Loft, Kostprijs = 18.20, Straat = "", Huisnummer = 10, Postcode = 8720, Beschrijving = "", Gemeente = "", isVerkocht = false, Oppervlakte = 11 },
+                new { ProductID = 3, ProjectID = 2, Titel = "Gezellige Woning", Type = EnumType.Halfopen, Kostprijs = 25.33, Straat = "", Huisnummer = 11, Postcode = 8720, Beschrijving = "", Gemeente = "", isVerkocht = false, Oppervlakte = 12 }
             );
         }
 

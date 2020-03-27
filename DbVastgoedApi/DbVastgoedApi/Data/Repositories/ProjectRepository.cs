@@ -29,7 +29,7 @@ namespace DbVastgoedApi.Data
         }
         public Project geefProjectOpID(int id)
         {
-            return _projecten.SingleOrDefault(p => p.ID == id);
+            return _projecten.SingleOrDefault(p => p.ProjectID == id);
         }
         public void Update(Project p)
         {
@@ -46,6 +46,12 @@ namespace DbVastgoedApi.Data
         public void SaveChanges()
         {
             _context.SaveChanges();
+        }
+
+        public bool TryGetProject(int id, out Project p)
+        {
+            p = _context.Projecten.Include(t => t.Producten).FirstOrDefault(t => t.ProjectID == id);
+            return p != null;
         }
     }
 }

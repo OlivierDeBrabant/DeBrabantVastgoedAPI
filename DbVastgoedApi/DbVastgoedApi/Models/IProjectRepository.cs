@@ -14,5 +14,6 @@ namespace DbVastgoedApi.Models
         public void DeleteProject(Project p);
         public void DeleteProduct(Product p);
         public void SaveChanges();
+        public bool TryGetProject(int id, out Project p);
     }
 }
