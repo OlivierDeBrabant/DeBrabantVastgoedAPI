@@ -46,7 +46,7 @@ namespace DbVastgoedApi.Controllers
             return CreatedAtAction(nameof(GetProject), new { id = project.ProjectID }, project);
         }
         [HttpPut("{id}")]
-        public IActionResult PutRecipe(int id, Project p)
+        public IActionResult PutProject(int id, Project p)
         {
             if (id != p.ProjectID)
             {
@@ -83,7 +83,7 @@ namespace DbVastgoedApi.Controllers
             _projectRepo.SaveChanges();
             return CreatedAtAction("GetProduct", new { id = project.ProjectID, productID = productToCreate.ProductID }, productToCreate);
         }
-
+        
         [HttpPost]
         public ActionResult<Project> PostProject(ProjectDTO p)
         {
@@ -92,11 +92,9 @@ namespace DbVastgoedApi.Controllers
             _projectRepo.SaveChanges();
             return CreatedAtAction(nameof(GetProject), new { id = p.ProjectID }, projectToCreate);
 
-            /*
-                foreach (var i in p.Ingredients)
-                recipeToCreate.AddIngredient(new Ingredient(i.Name, i.Amount, i.Unit));
-            */
+
         }
+        
     }
 }
  
