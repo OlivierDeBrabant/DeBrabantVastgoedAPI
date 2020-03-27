@@ -43,6 +43,8 @@ namespace DbVastgoedApi
                 c.Version = "v1";
                 c.Description = "The De Brabant Vastgoed API documentation description.";
             });
+
+            services.AddCors(options => options.AddPolicy("AllowAllOrigins", builder => builder.AllowAnyOrigin()));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,6 +59,7 @@ namespace DbVastgoedApi
 
             app.UseOpenApi(); 
             app.UseSwaggerUi3();
+            app.UseCors("AllowAllOrigins");
 
             app.UseRouting();
 

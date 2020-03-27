@@ -84,13 +84,19 @@ namespace DbVastgoedApi.Controllers
             return CreatedAtAction("GetProduct", new { id = project.ProjectID, productID = productToCreate.ProductID }, productToCreate);
         }
 
-        [HttpPost("/projects")]
+        [HttpPost]
         public ActionResult<Project> PostProject(ProjectDTO p)
         {
-            var projectToCreate = new Project(p.Naam, p.Beschrijving, p.ProjectID);
+            Project projectToCreate = new Project() { Naam = p.Naam, Beschrijving = p.Beschrijving, ProjectID = p.ProjectID };
             _projectRepo.Add(projectToCreate);
             _projectRepo.SaveChanges();
-            return CreatedAtAction("GetProject", new { id = p.ProjectID }, projectToCreate);
+            return CreatedAtAction(nameof(GetProject), new { id = p.ProjectID }, projectToCreate);
+
+            /*
+                foreach (var i in p.Ingredients)
+                recipeToCreate.AddIngredient(new Ingredient(i.Name, i.Amount, i.Unit));
+            */
         }
     }
 }
+ 

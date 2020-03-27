@@ -20,13 +20,6 @@ namespace DbVastgoedApi.Models
             Producten = new List<Product>();
         }
 
-        public Project(string naam, string beschrijving, int projectID)
-        {
-            Naam = naam;
-            Beschrijving = beschrijving;
-            ProjectID = projectID;
-        }
-
         public void VoegProductToe(Product p)
         {
             Producten.Add(p);
