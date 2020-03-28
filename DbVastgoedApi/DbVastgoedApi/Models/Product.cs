@@ -17,10 +17,9 @@ namespace DbVastgoedApi.Models
         public string Beschrijving { get; set; }
         public double Kostprijs { get; set; }
         public EnumType Type { get; set; }
-        //public List<int> FotoNummers { get; set; }
         public Boolean isVerkocht { get; set; }
         public int ProductID { get; set; }
-       // public int ProjectID { get; set; }
+
 
         public Product(string titel, string straat, int huisnummer, int postcode, string gemeente, int oppervlakte, string beschrijving, bool isVerkocht, EnumType type, double kostprijs)
         {

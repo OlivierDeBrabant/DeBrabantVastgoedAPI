@@ -20,7 +20,7 @@ namespace DbVastgoedApi.Controllers
         {
             _projectRepo = repo;
         }
-
+        #region HttpGet
         [HttpGet]
         public IEnumerable<Project> GetProjects()
         {
@@ -34,29 +34,6 @@ namespace DbVastgoedApi.Controllers
             if (project == null) return NotFound();
             return project;
         }
-        [HttpPost]
-        public ActionResult<Project> AddProject(Project p)
-        {
-            Project project = new Project() { ProjectID = p.ProjectID, Naam = p.Naam, Beschrijving = p.Beschrijving};
-            foreach (var i in p.Producten)
-                project.VoegProductToe(new Product(i.Titel, i.Straat, i.Huisnummer, i.Postcode, i.Gemeente, i.Oppervlakte, i.Beschrijving, i.isVerkocht, i.Type, i.Kostprijs));
-            _projectRepo.Add(project);
-            _projectRepo.SaveChanges();
-
-            return CreatedAtAction(nameof(GetProject), new { id = project.ProjectID }, project);
-        }
-        [HttpPut("{id}")]
-        public IActionResult PutProject(int id, Project p)
-        {
-            if (id != p.ProjectID)
-            {
-                return BadRequest();
-            }
-            _projectRepo.Update(p);
-            _projectRepo.SaveChanges();
-            return NoContent();
-        }
-
         [HttpGet("{id}/products/{productID}")]
         public ActionResult<Product> GetProduct(int id, int productID)
         {
@@ -69,10 +46,39 @@ namespace DbVastgoedApi.Controllers
                 return NotFound();
             return p;
         }
+        #endregion
 
+        #region HttpPut
+        [HttpPut("{id}")]
+        public IActionResult PutProject(int id, Project p)
+        {
+            if (id != p.ProjectID)
+            {
+                return BadRequest();
+            }
+            _projectRepo.Update(p);
+            _projectRepo.SaveChanges();
+            return NoContent();
+        }
+         [HttpPut("{id}/products/{productID}")]
+         public IActionResult PutProduct(int id, int productID, Product p)
+        {
+            _projectRepo.TryGetProject(id, out var project);
+
+            Product product = project.GetProduct(productID);
+            product = p;
+
+            _projectRepo.Update(project);
+            _projectRepo.SaveChanges();
+
+            return NoContent();
+        }
+        #endregion
+
+        #region HttpPost
         //Adds a product to a project
         [HttpPost("{id}/products")]
-        public ActionResult<Product> PostIngredient(int id,  Product p)
+        public ActionResult<Product> AddProduct(int id,  ProductDTO p)
         {
             if (!_projectRepo.TryGetProject(id, out var project))
             {
@@ -83,18 +89,47 @@ namespace DbVastgoedApi.Controllers
             _projectRepo.SaveChanges();
             return CreatedAtAction("GetProduct", new { id = project.ProjectID, productID = productToCreate.ProductID }, productToCreate);
         }
-        
-        [HttpPost]
-        public ActionResult<Project> PostProject(ProjectDTO p)
+        //Adds a new Project
+        [HttpPost("AddProject")]
+        public ActionResult<Project> AddProject(ProjectDTO p)
         {
-            Project projectToCreate = new Project() { Naam = p.Naam, Beschrijving = p.Beschrijving, ProjectID = p.ProjectID };
-            _projectRepo.Add(projectToCreate);
+            Project project = new Project() { Naam = p.Naam, Beschrijving = p.Beschrijving };
+            _projectRepo.Add(project);
             _projectRepo.SaveChanges();
-            return CreatedAtAction(nameof(GetProject), new { id = p.ProjectID }, projectToCreate);
 
-
+            return CreatedAtAction(nameof(GetProject), new { id = project.ProjectID }, project);
         }
-        
+        #endregion
+
+        #region HttpDelete
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteProject(int id)
+        {
+            Project project = _projectRepo.geefProjectOpID(id);
+            if (project == null)
+            {
+                return NotFound();
+            }
+            _projectRepo.DeleteProject(project);
+            _projectRepo.SaveChanges();
+            return NoContent();
+        }
+
+        [HttpDelete("{id}/products/{productID}")]
+        public IActionResult DeleteProduct(int id, int productID)
+        {
+            Project project = _projectRepo.geefProjectOpID(id);
+            if(project == null)
+            {
+                return NotFound();
+            }
+            _projectRepo.DeleteProduct(project, productID);
+            _projectRepo.SaveChanges();
+
+            return NoContent();
+        }
+        #endregion
     }
 }
  

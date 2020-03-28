@@ -28,5 +28,9 @@ namespace DbVastgoedApi.Models
         {
             return Producten.SingleOrDefault(p => p.ProductID == id);
         }
+        public void DeleteProduct(int id)
+        {
+            Producten.Remove(Producten.SingleOrDefault(p => p.ProductID == id));
+        }
     }
 }

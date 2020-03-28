@@ -12,7 +12,7 @@ namespace DbVastgoedApi.Models
         public Project geefProjectOpID(int id);
         public void Update(Project p);
         public void DeleteProject(Project p);
-        public void DeleteProduct(Product p);
+        public void DeleteProduct(Project p, int productID);
         public void SaveChanges();
         public bool TryGetProject(int id, out Project p);
     }

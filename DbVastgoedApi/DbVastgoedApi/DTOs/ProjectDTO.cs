@@ -8,7 +8,7 @@ namespace DbVastgoedApi.DTOs
     public class ProjectDTO
     {
         public string Naam { get; set; }
-        public int ProjectID { get; set; }
+        //public int ProjectID { get; set; }
         public string Beschrijving { get; set; }
     }
 }

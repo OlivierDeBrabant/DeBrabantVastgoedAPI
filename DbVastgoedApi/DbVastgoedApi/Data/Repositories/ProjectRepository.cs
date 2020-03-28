@@ -39,9 +39,9 @@ namespace DbVastgoedApi.Data
         {
             _projecten.Remove(p);
         }
-        public void DeleteProduct(Product p)
+        public void DeleteProduct(Project p, int productID)
         {
-            
+            p.DeleteProduct(productID);
         }
         public void SaveChanges()
         {
