@@ -1,4 +1,5 @@
 ﻿using DbVastgoedApi.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DbVastgoedApi.Data
 {
-    public class ProjectContext : DbContext
+    public class ProjectContext : IdentityDbContext
     {
         public ProjectContext(DbContextOptions<ProjectContext> options) : base(options)
         {
@@ -22,10 +23,15 @@ namespace DbVastgoedApi.Data
                 .WithOne()
                 .IsRequired()
                 .HasForeignKey("ProjectID"); //Shadow property
-            builder.Entity<Project>().Property(p => p.Naam).IsRequired().HasMaxLength(50);
 
+            builder.Entity<Project>().Property(p => p.Naam).IsRequired().HasMaxLength(50);
             builder.Entity<Product>().Property(pr => pr.Titel).IsRequired().HasMaxLength(50);
-            
+
+            //builder.Entity<Administrator>().HasKey(a => a.AdministratorId);
+            builder.Entity<Administrator>().Property(a => a.LastName).IsRequired().HasMaxLength(50);
+            builder.Entity<Administrator>().Property(a => a.FirstName).IsRequired().HasMaxLength(50);
+            builder.Entity<Administrator>().Property(a => a.Email).IsRequired().HasMaxLength(100);
+
 
             //Another way to seed the database
             builder.Entity<Project>().HasData(
@@ -42,5 +48,6 @@ namespace DbVastgoedApi.Data
         }
 
         public DbSet<Project> Projecten { get; set; }
+        public DbSet<Administrator> Administrators { get; set; }
     }
 }

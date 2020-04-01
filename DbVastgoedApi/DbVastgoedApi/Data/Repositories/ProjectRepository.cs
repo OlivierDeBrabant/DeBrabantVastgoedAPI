@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DbVastgoedApi.Data
+namespace DbVastgoedApi.Data.Repositories
 {
     public class ProjectRepository : IProjectRepository
     {

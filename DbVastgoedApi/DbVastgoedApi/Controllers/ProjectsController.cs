@@ -37,11 +37,11 @@ namespace DbVastgoedApi.Controllers
         [HttpGet("{id}/products/{productID}")]
         public ActionResult<Product> GetProduct(int id, int productID)
         {
-            if (!_projectRepo.TryGetProject(id, out var recipe))
+            if (!_projectRepo.TryGetProject(id, out var project))
             {
                 return NotFound();
             }
-            Product p = recipe.GetProduct(productID);
+            Product p = project.GetProduct(productID);
             if (p == null)
                 return NotFound();
             return p;
@@ -119,6 +119,8 @@ namespace DbVastgoedApi.Controllers
         [HttpDelete("{id}/products/{productID}")]
         public IActionResult DeleteProduct(int id, int productID)
         {
+            //GEEN ERROR, MAAR WERKT NIET
+
             Project project = _projectRepo.geefProjectOpID(id);
             if(project == null)
             {
