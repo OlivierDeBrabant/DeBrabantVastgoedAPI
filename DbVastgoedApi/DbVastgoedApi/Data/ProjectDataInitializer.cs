@@ -24,7 +24,7 @@ namespace DbVastgoedApi.Data
                 await CreateUser(admin.Email, "P@ssword1111");
 
                 Administrator admin2 = new Administrator { Email = "db@db.com", FirstName = "Admin", LastName = "De Brabant" };
-                _dbContext.Administrators.Add(admin);
+                _dbContext.Administrators.Add(admin2);
                 await CreateUser(admin2.Email, "P@ssword1111");
                 _dbContext.SaveChanges();
             }
