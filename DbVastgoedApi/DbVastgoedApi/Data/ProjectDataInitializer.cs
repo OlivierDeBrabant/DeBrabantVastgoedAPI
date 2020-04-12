@@ -16,7 +16,7 @@ namespace DbVastgoedApi.Data
 
         public async Task InitializeData()
         {
-            _dbContext.Database.EnsureDeleted();
+            //_dbContext.Database.EnsureDeleted();
             if (_dbContext.Database.EnsureCreated())
             {
                 Administrator admin = new Administrator { Email = "oliver@outlook.com", FirstName = "Olivier", LastName = "De Brabant" };

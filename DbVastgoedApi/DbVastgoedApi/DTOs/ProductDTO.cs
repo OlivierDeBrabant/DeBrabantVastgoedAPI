@@ -9,10 +9,6 @@ namespace DbVastgoedApi.DTOs
     public class ProductDTO
     {
         public string Titel { get; set; }
-        public string Straat { get; set; }
-        public string Gemeente { get; set; }
-        public int Postcode { get; set; }
-        public int Huisnummer { get; set; }
         public int Oppervlakte { get; set; }
         public string Beschrijving { get; set; }
         public double Kostprijs { get; set; }

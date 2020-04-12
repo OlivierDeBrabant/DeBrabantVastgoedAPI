@@ -59,28 +59,6 @@ namespace RecipeApi.Controllers
             return BadRequest();
         }
 
-        private String GetToken(IdentityUser user)
-        {
-            // Create the token
-            var claims = new[]
-            {
-              new Claim(JwtRegisteredClaimNames.Sub, user.Email),
-              new Claim(JwtRegisteredClaimNames.UniqueName, user.UserName)
-            };
-
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Tokens:Key"]));
-
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
-            var token = new JwtSecurityToken(
-              null, null,
-              claims,
-              expires: DateTime.Now.AddMinutes(30),
-              signingCredentials: creds);
-
-            return new JwtSecurityTokenHandler().WriteToken(token);
-        }
-
         [AllowAnonymous]
         [HttpPost("register")]
         public async Task<ActionResult<String>> Register(RegisterDTO model)
@@ -105,6 +83,27 @@ namespace RecipeApi.Controllers
         {
             var user = await _userManager.FindByNameAsync(email);
             return user == null;
+        }
+        private String GetToken(IdentityUser user)
+        {
+            // Create the token
+            var claims = new[]
+            {
+              new Claim(JwtRegisteredClaimNames.Sub, user.Email),
+              new Claim(JwtRegisteredClaimNames.UniqueName, user.UserName)
+            };
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Tokens:Key"]));
+
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+            var token = new JwtSecurityToken(
+              null, null,
+              claims,
+              expires: DateTime.Now.AddMinutes(30),
+              signingCredentials: creds);
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
         }
     }
 }

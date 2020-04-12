@@ -84,7 +84,7 @@ namespace DbVastgoedApi.Controllers
             {
                 return NotFound();
             }
-            var productToCreate = new Product(p.Titel, p.Straat, p.Huisnummer, p.Postcode, p.Gemeente, p.Oppervlakte, p.Beschrijving, p.isVerkocht, p.Type, p.Kostprijs);
+            var productToCreate = new Product(p.Titel,p.Oppervlakte, p.Beschrijving, p.isVerkocht, p.Type, p.Kostprijs);
             project.VoegProductToe(productToCreate);
             _projectRepo.SaveChanges();
             return CreatedAtAction("GetProduct", new { id = project.ProjectID, productID = productToCreate.ProductID }, productToCreate);
@@ -93,7 +93,7 @@ namespace DbVastgoedApi.Controllers
         [HttpPost("AddProject")]
         public ActionResult<Project> AddProject(ProjectDTO p)
         {
-            Project project = new Project() { Naam = p.Naam, Beschrijving = p.Beschrijving };
+            Project project = new Project() { Naam = p.Naam, Beschrijving = p.Beschrijving, Adres = p.Adres};
             _projectRepo.Add(project);
             _projectRepo.SaveChanges();
 
