@@ -1,4 +1,5 @@
 ﻿using DbVastgoedApi.Data;
+using DbVastgoedApi.DTOs;
 using DbVastgoedApi.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
