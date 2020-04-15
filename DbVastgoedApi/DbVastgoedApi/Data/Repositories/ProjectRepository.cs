@@ -30,7 +30,8 @@ namespace DbVastgoedApi.Data.Repositories
         }
         public Project geefProjectOpID(int id)
         {
-            return _projecten.SingleOrDefault(p => p.ProjectID == id);
+            //return _projecten.SingleOrDefault(p => p.ProjectID == id);
+            return _projecten.Include(r => r.Producten).SingleOrDefault(p => p.ProjectID == id);
         }
         public void Update(Project p)
         {

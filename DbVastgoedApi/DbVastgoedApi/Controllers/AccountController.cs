@@ -58,7 +58,11 @@ namespace RecipeApi.Controllers
             }
             return BadRequest();
         }
-
+        /// <summary>
+        /// Register a user
+        /// </summary>
+        /// <param name="model">the user details</param>
+        /// <returns></returns>
         [AllowAnonymous]
         [HttpPost("register")]
         public async Task<ActionResult<String>> Register(RegisterDTO model)
@@ -76,7 +80,11 @@ namespace RecipeApi.Controllers
             }
             return BadRequest();
         }
-
+        /// <summary>
+        /// Checks if an email is available as username
+        /// </summary>
+        /// <returns>true if the email is not registered yet</returns>
+        /// <param name="email">Email.</param>/
         [AllowAnonymous]
         [HttpGet("checkusername")]
         public async Task<ActionResult<Boolean>> CheckAvailableUserName(string email)

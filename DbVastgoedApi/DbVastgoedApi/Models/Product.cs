@@ -8,17 +8,14 @@ namespace DbVastgoedApi.Models
 {
     public class Product
     {
+        public int ProductID { get; set; }
         public string Titel { get; set; }
-        /*public string Straat { get; set; }
-        public string Gemeente { get; set; }
-        public int Postcode { get; set; }
-        public int Huisnummer { get; set; }
-        */public int Oppervlakte { get; set; }
+        public int Oppervlakte { get; set; }
         public string Beschrijving { get; set; }
         public double Kostprijs { get; set; }
         public EnumType Type { get; set; }
         public Boolean isVerkocht { get; set; }
-        public int ProductID { get; set; }
+        
 
 
         public Product(string titel, int oppervlakte, string beschrijving, bool isVerkocht, EnumType type, double kostprijs)

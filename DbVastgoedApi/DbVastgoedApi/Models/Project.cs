@@ -8,9 +8,9 @@ namespace DbVastgoedApi.Models
 {
     public class Project
     {
+        public int ProjectID { get; set; }
         [Required]
         public string Naam { get; set; }
-        public int ProjectID { get; set; }
         public string Beschrijving { get; set; }
         public string Adres { get; set; }
         public ICollection<Product> Producten { get; set; }

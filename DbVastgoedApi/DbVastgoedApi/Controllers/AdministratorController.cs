@@ -25,6 +25,10 @@ namespace DbVastgoedApi.Controllers
             _adminRepo = adminRepo;
         }
 
+        /// <summary>
+        /// Get the details of the authenticated customer
+        /// </summary>
+        /// <returns>the customer</returns>
         [HttpGet()]
         public ActionResult<AdministratorDTO> GetCustomer()
         {

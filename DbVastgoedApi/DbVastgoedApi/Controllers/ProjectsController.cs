@@ -21,12 +21,23 @@ namespace DbVastgoedApi.Controllers
             _projectRepo = repo;
         }
         #region HttpGet
+        // GET: api/Projects
+        /// <summary>
+        /// Get all the Projects
+        /// </summary>
+        /// <returns>List of projects</returns>
         [HttpGet]
         public IEnumerable<Project> GetProjects()
         {
             return _projectRepo.GeefAlle();
         }
         
+        //  GET: api/Projects/2
+        /// <summary>
+        /// Get the project with a given id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public ActionResult<Project> GetProject(int id)
         {
@@ -34,6 +45,13 @@ namespace DbVastgoedApi.Controllers
             if (project == null) return NotFound();
             return project;
         }
+        // GET: api/Projects/5/products/2
+        /// <summary>
+        /// Get a product from a project
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="productID"></param>
+        /// <returns>Product</returns>
         [HttpGet("{id}/products/{productID}")]
         public ActionResult<Product> GetProduct(int id, int productID)
         {
@@ -48,6 +66,12 @@ namespace DbVastgoedApi.Controllers
         }
         #endregion
 
+        //PUT: api/Projects/2
+        /// <summary>
+        /// Edit the project with given id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="p"></param>
         #region HttpPut
         [HttpPut("{id}")]
         public IActionResult PutProject(int id, Project p)
@@ -60,6 +84,14 @@ namespace DbVastgoedApi.Controllers
             _projectRepo.SaveChanges();
             return NoContent();
         }
+        
+        //PUT: api/Projects/2/products/3
+        /// <summary>
+        /// Edit a product with given id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="productID"></param>
+        /// <param name="p"></param>
          [HttpPut("{id}/products/{productID}")]
          public IActionResult PutProduct(int id, int productID, Product p)
         {
@@ -76,7 +108,13 @@ namespace DbVastgoedApi.Controllers
         #endregion
 
         #region HttpPost
-        //Adds a product to a project
+        //POST: api/Projects/3/products
+        /// <summary>
+        /// Adds a product to a project
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="p"></param>
+        /// <returns>Product</returns>
         [HttpPost("{id}/products")]
         public ActionResult<Product> AddProduct(int id,  ProductDTO p)
         {
@@ -89,7 +127,13 @@ namespace DbVastgoedApi.Controllers
             _projectRepo.SaveChanges();
             return CreatedAtAction("GetProduct", new { id = project.ProjectID, productID = productToCreate.ProductID }, productToCreate);
         }
-        //Adds a new Project
+
+        //POST: api/Projects/AddProject
+        /// <summary>
+        /// Add a project
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns>Project</returns>
         [HttpPost("AddProject")]
         public ActionResult<Project> AddProject(ProjectDTO p)
         {
@@ -103,6 +147,11 @@ namespace DbVastgoedApi.Controllers
 
         #region HttpDelete
 
+        //DELETE: api/Projects/2
+        /// <summary>
+        /// Delete a project with given id
+        /// </summary>
+        /// <param name="id"></param>
         [HttpDelete("{id}")]
         public IActionResult DeleteProject(int id)
         {
@@ -116,6 +165,12 @@ namespace DbVastgoedApi.Controllers
             return NoContent();
         }
 
+        //DELETE: api/Projects/2/products/5
+        /// <summary>
+        /// Delete a product
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="productID"></param>
         [HttpDelete("{id}/products/{productID}")]
         public IActionResult DeleteProduct(int id, int productID)
         {
