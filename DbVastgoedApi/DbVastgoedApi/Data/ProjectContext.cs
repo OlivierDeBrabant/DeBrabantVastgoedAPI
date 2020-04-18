@@ -41,9 +41,9 @@ namespace DbVastgoedApi.Data
 
             builder.Entity<Product>().HasData(
             //Shadow property can be used for the foreign key, in combination with anaonymous objects
-                new { ProductID = 1, ProjectID = 1, Titel = "Ruim Appartement", Type = EnumType.Appartement, Kostprijs = 7.28, Beschrijving = "", isVerkocht = false, Oppervlakte = 10},
-                new { ProductID = 2, ProjectID = 1, Titel = "Zonnig Dakappartement", Type = EnumType.Loft, Kostprijs = 18.20, Beschrijving = "", isVerkocht = false, Oppervlakte = 11 },
-                new { ProductID = 3, ProjectID = 2, Titel = "Gezellige Woning", Type = EnumType.Halfopen, Kostprijs = 25.33,Beschrijving = "", isVerkocht = false, Oppervlakte = 12 }
+                new { ProductID = 1, ProjectID = 1, Titel = "Ruim Appartement", Type = "Appartement", Kostprijs = 7.28, Beschrijving = "", isVerkocht = false, Oppervlakte = 10},
+                new { ProductID = 2, ProjectID = 1, Titel = "Zonnig Dakappartement", Type = "Loft", Kostprijs = 18.20, Beschrijving = "", isVerkocht = false, Oppervlakte = 11 },
+                new { ProductID = 3, ProjectID = 2, Titel = "Gezellige Woning", Type = "Open Huis", Kostprijs = 25.33,Beschrijving = "", isVerkocht = false, Oppervlakte = 12 }
             );
         }
 

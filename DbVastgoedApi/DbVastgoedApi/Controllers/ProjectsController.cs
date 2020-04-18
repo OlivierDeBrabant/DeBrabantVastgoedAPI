@@ -66,13 +66,13 @@ namespace DbVastgoedApi.Controllers
         }
         #endregion
 
+        #region HttpPut
         //PUT: api/Projects/2
         /// <summary>
         /// Edit the project with given id
         /// </summary>
         /// <param name="id"></param>
         /// <param name="p"></param>
-        #region HttpPut
         [HttpPut("{id}")]
         public IActionResult PutProject(int id, Project p)
         {
@@ -95,10 +95,11 @@ namespace DbVastgoedApi.Controllers
          [HttpPut("{id}/products/{productID}")]
          public IActionResult PutProduct(int id, int productID, Product p)
         {
-            _projectRepo.TryGetProject(id, out var project);
+            if (!_projectRepo.TryGetProject(id, out var project)) {
+                return NotFound();
+            }
 
-            Product product = project.GetProduct(productID);
-            product = p;
+            project.changeProduct(productID, p);
 
             _projectRepo.Update(project);
             _projectRepo.SaveChanges();
@@ -115,7 +116,7 @@ namespace DbVastgoedApi.Controllers
         /// <param name="id"></param>
         /// <param name="p"></param>
         /// <returns>Product</returns>
-        [HttpPost("{id}/products")]
+        [HttpPost("{id}/AddProduct")]
         public ActionResult<Product> AddProduct(int id,  ProductDTO p)
         {
             if (!_projectRepo.TryGetProject(id, out var project))

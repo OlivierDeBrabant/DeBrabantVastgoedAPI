@@ -33,5 +33,16 @@ namespace DbVastgoedApi.Models
         {
             Producten.Remove(Producten.SingleOrDefault(p => p.ProductID == id));
         }
+        public void changeProduct(int productId, Product p)
+        {
+            Product prod = GetProduct(productId);
+
+            prod.Titel = p.Titel;
+            prod.Beschrijving = p.Beschrijving;
+            prod.Oppervlakte = p.Oppervlakte;
+            prod.Kostprijs = p.Kostprijs;
+            prod.Type = p.Type;
+            prod.isVerkocht = p.isVerkocht;
+        }
     }
 }

@@ -13,12 +13,12 @@ namespace DbVastgoedApi.Models
         public int Oppervlakte { get; set; }
         public string Beschrijving { get; set; }
         public double Kostprijs { get; set; }
-        public EnumType Type { get; set; }
+        public string Type { get; set; }
         public Boolean isVerkocht { get; set; }
         
 
 
-        public Product(string titel, int oppervlakte, string beschrijving, bool isVerkocht, EnumType type, double kostprijs)
+        public Product(string titel, int oppervlakte, string beschrijving, bool isVerkocht, string type, double kostprijs)
         {
             Titel = titel;
             Oppervlakte = oppervlakte;
