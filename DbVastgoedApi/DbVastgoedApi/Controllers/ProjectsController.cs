@@ -36,7 +36,7 @@ namespace DbVastgoedApi.Controllers
         /// <summary>
         /// Get the project with a given id
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">ProjectID</param>
         /// <returns></returns>
         [HttpGet("{id}")]
         public ActionResult<Project> GetProject(int id)
