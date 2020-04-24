@@ -1,10 +1,10 @@
-﻿#DbVastgoedAPI
+﻿# DbVastgoedAPI
 Deze api maakt connectie met de databank om de projecten en producten toe te voegen/ verwijderen/ aanpassen.
 
-##Instalatie
+## Instalatie
 Om de website werkend te krijgen moet er manueel een secret token toegevoegd worden.
 
-..*Rechterklik op solutionnaam > Manage user secrets
+..* Rechterklik op solutionnaam > Manage user secrets
 
 ```
 {
@@ -12,16 +12,16 @@ Om de website werkend te krijgen moet er manueel een secret token toegevoegd wor
 }
 ```
 
-##Aanmeldingsgegevens
+## Aanmeldingsgegevens
 
-..*Email = db@db.com
-..*Wachtwoord = P@ssword1111
+..* Email = db@db.com
+..* Wachtwoord = P@ssword1111
 
-##Projecten
+## Projecten
 De website bestaat uit projecten. Ieder project is een verzameling van 1 of meerdere producten.
 Een product is doorgaans een appartement of een huis.
 
-##Administrator
+## Administrator
 Om aanpassingen te doen aan de database is er op de website een inlogfunctie voorzien. Ingelogde administrators kunnen:
 
 ..*Projecten toevoegen
