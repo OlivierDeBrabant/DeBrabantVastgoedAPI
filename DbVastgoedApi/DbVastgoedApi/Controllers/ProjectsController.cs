@@ -82,7 +82,8 @@ namespace DbVastgoedApi.Controllers
             }
             _projectRepo.Update(p);
             _projectRepo.SaveChanges();
-            return NoContent();
+
+            return CreatedAtAction(nameof(GetProject), new { id = p.ProjectID }, p);
         }
         
         //PUT: api/Projects/2/products/3
@@ -104,7 +105,7 @@ namespace DbVastgoedApi.Controllers
             _projectRepo.Update(project);
             _projectRepo.SaveChanges();
 
-            return NoContent();
+            return CreatedAtAction(nameof(GetProject), new { id = project.ProjectID }, project);
         }
         #endregion
 
