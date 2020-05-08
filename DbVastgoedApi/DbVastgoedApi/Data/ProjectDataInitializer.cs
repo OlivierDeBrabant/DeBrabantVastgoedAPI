@@ -19,7 +19,7 @@ namespace DbVastgoedApi.Data
             //_dbContext.Database.EnsureDeleted();
             if (_dbContext.Database.EnsureCreated())
             {
-                Administrator admin = new Administrator { Email = "oliver@outlook.com", FirstName = "Olivier", LastName = "De Brabant" };
+                Administrator admin = new Administrator { Email = "olivier@outlook.com", FirstName = "Olivier", LastName = "De Brabant" };
                 _dbContext.Administrators.Add(admin);
                 await CreateUser(admin.Email, "P@ssword1111");
 
