@@ -5,12 +5,15 @@ using System.Threading.Tasks;
 using DbVastgoedApi.Data;
 using DbVastgoedApi.DTOs;
 using DbVastgoedApi.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DbVastgoedApi.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ApiController]
     public class ProjectsController : ControllerBase
     {
@@ -26,18 +29,20 @@ namespace DbVastgoedApi.Controllers
         /// Get all the Projects
         /// </summary>
         /// <returns>List of projects</returns>
+        [AllowAnonymous]
         [HttpGet]
         public IEnumerable<Project> GetProjects()
         {
             return _projectRepo.GeefAlle();
         }
-        
+
         //  GET: api/Projects/2
         /// <summary>
         /// Get the project with a given id
         /// </summary>
         /// <param name="id">ProjectID</param>
         /// <returns></returns>
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public ActionResult<Project> GetProject(int id)
         {
@@ -52,6 +57,7 @@ namespace DbVastgoedApi.Controllers
         /// <param name="id"></param>
         /// <param name="productID"></param>
         /// <returns>Product</returns>
+        [AllowAnonymous]
         [HttpGet("{id}/products/{productID}")]
         public ActionResult<Product> GetProduct(int id, int productID)
         {
