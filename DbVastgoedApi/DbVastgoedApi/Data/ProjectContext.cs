@@ -44,8 +44,8 @@ namespace DbVastgoedApi.Data
 
                 new { ProductID = 3, ProjectID = 2, Titel = "Appartement 1", Type = "Appartement", Kostprijs = 375000.0, Beschrijving = "", isVerkocht = false, Oppervlakte = 320 },
 
-                new { ProductID = 4, ProjectID = 1, Titel = "Appartement 1", Type = "Appartement", Kostprijs = 175000.0, Beschrijving = "Appartement met terras en 1 slaapkamer.", isVerkocht = false, Oppervlakte = 85 },
-                new { ProductID = 5, ProjectID = 1, Titel = "Appartement 2", Type = "Appartement", Kostprijs = 275000.0, Beschrijving = "Appartement met groot terras en 2 slaapkamers.", isVerkocht = false, Oppervlakte = 130 },
+                new { ProductID = 4, ProjectID = 3, Titel = "Appartement 1", Type = "Appartement", Kostprijs = 175000.0, Beschrijving = "Appartement met terras en 1 slaapkamer.", isVerkocht = false, Oppervlakte = 85 },
+                new { ProductID = 5, ProjectID = 3, Titel = "Appartement 2", Type = "Appartement", Kostprijs = 275000.0, Beschrijving = "Appartement met groot terras en 2 slaapkamers.", isVerkocht = false, Oppervlakte = 130 },
 
                 new { ProductID = 6, ProjectID = 4, Titel = "Huis 1", Type = "Halfopen", Kostprijs = 275000.0, Beschrijving = "Halfopen huis met ruime woonkamer en 4 slaapkamers.", isVerkocht = true, Oppervlakte = 245 },
                 new { ProductID = 7, ProjectID = 4, Titel = "Huis 2", Type = "Halfopen", Kostprijs = 280000.0, Beschrijving = "Halfopen huis met ruime woonkamer en 4 slaapkamers. Mogelijkheid voor een carpool naast het huis.", isVerkocht = false, Oppervlakte = 260 }
