@@ -17,5 +17,9 @@
     <PackageReference Include="NSwag.AspNetCore" Version="13.3.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="StaticFiles\Images\" />
+  </ItemGroup>
+
 
 </Project>

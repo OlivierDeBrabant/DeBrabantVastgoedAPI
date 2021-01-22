@@ -14,7 +14,7 @@ namespace DbVastgoedApi.Models
         public string Beschrijving { get; set; }
         public string Adres { get; set; }
         public ICollection<Product> Producten { get; set; }
-
+        public string imgPath { get; set; }
 
         public Project()
         {
